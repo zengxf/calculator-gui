@@ -82,7 +82,7 @@ public class Calculator {
     }
 
     private BigDecimal valueOf(double value) {
-        return new BigDecimal(value).setScale(scale, mode);
+        return BigDecimal.valueOf(value).setScale(scale, mode);
     }
 
 }
