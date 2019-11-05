@@ -22,7 +22,7 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <TextArea fx:id="historyArea" layoutX="89.0" layoutY="66.0" prefHeight="254.0" prefWidth="438.0">
+        <TextArea fx:id="historyArea" editable="false" layoutX="89.0" layoutY="66.0" prefHeight="254.0" prefWidth="438.0">
             <font>
                 <Font size="14.0" />
             </font>
