@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="382.0" prefWidth="533.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculator_gui.CalculatorController">
+    <children>
+        <Button fx:id="closeBtn" layoutX="245.0" layoutY="334.0" mnemonicParsing="false" onAction="#onClose" text="关 闭">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <TextField fx:id="expressionText" layoutX="89.0" layoutY="19.0" onKeyReleased="#onTextKey" prefHeight="23.0" prefWidth="383.0" text="( 1 + 0.05 / 3 )^ 4">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </TextField>
+        <Label layoutX="27.0" layoutY="19.0" text="表达式">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <TextArea fx:id="historyArea" layoutX="89.0" layoutY="66.0" prefHeight="254.0" prefWidth="438.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </TextArea>
+        <Label layoutX="9.0" layoutY="76.0" text="历史记录">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Button fx:id="clearBtn" layoutX="7.0" layoutY="108.0" mnemonicParsing="false" onAction="#onClearHistory" text="清空记录">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Button fx:id="calculateBtn" layoutX="481.0" layoutY="22.0" mnemonicParsing="false" onAction="#onCalculate" text="计 算" />
+    </children>
+</AnchorPane>
