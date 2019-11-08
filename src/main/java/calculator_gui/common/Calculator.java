@@ -34,10 +34,15 @@ public class Calculator {
 
     public BigDecimal calculate(String expression) {
         Expression ex = new Expression(expression)
-                .setRoundingMode(this.mode);
+                .setRoundingMode(this.mode)
+                .setVariable("k", "1000")
+                .setVariable("w", "10000")
+                .setVariable("m", "1000000")
+                .setVariable("y", "100000000");
         this.setLe(ex)
                 .setLg(ex)
-                .setLog(ex);
+                .setLog(ex)
+                .setSqrt(ex);
         BigDecimal result = ex.eval()
                 .setScale(this.scale, this.mode);
         log.debug("{} = {}", expression, result);
@@ -76,6 +81,28 @@ public class Calculator {
                 double v1 = parameters.get(0).doubleValue();
                 double v2 = parameters.get(1).doubleValue();
                 return Calculator.this.valueOf(Math.log(v2) / Math.log(v1));
+            }
+        });
+        return this;
+    }
+
+    /*** sqrt(4) = sqrt_2{4}; sqrt(4, 64) = sqrt_4{64};  */
+    private Calculator setSqrt(Expression ex) {
+        ex.addFunction(new AbstractFunction("sqrt", -1) {
+            @Override
+            public BigDecimal eval(List<BigDecimal> parameters) {
+                int size = parameters.size();
+                if (size == 0 || size > 2)
+                    throw new RuntimeException("只支持一个或两个参数");
+                double value;
+                double v1 = parameters.get(0).doubleValue();
+                if (size == 1)
+                    value = Math.sqrt(v1);
+                else {
+                    double v2 = parameters.get(1).doubleValue();
+                    value = Math.pow(v2, 1D / v1);
+                }
+                return Calculator.this.valueOf(value);
             }
         });
         return this;

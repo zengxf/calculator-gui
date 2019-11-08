@@ -15,6 +15,9 @@ public class ExpressionFormatterTest {
     public void format() {
         String ex = "23  /23 +32-32*43  %  23  /log(  20  )";
         log.info("{} #### {}", ex, ExpressionFormatter.format(ex));
+
+        ex = "23*k/43*w";
+        log.info("{} #### {}", ex, ExpressionFormatter.format(ex));
     }
 
 }

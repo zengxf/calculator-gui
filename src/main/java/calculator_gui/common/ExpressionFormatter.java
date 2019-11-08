@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class ExpressionFormatter {
 
     public static String format(String expression) {
-        String res = expression;
+        String res = expression.replace(" ", "");
         String regex = "\\s*([\\d|\\.]+|/|\\*|\\+|\\-|%)\\s*";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(expression);
@@ -25,7 +25,7 @@ public class ExpressionFormatter {
             matcher.appendTail(sb);
             res = sb.toString();
         }
-        return res.replace("  ", " ");
+        return res.replace("  ", " ").trim();
     }
 
 }
